@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="add_field_contacts_schedule" model="ir.ui.view">
+        <field name="name">add.field.contacts.schedule</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+           
+            <!--hacemos invisible day_visit ,rec y visit -->
+            <field name="day_visit" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field> 
+            <field name="visit" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field> 
+             <field name="rec" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field> 
+
+            <!--Agregado del campo boolean-->
+            <field name="website" position="after">
+              <field name="see_days"/>
+             
+            </field>
+              
+            <field name="website" position="after">
+               <field name="days_visits" />
+               <field name="delivery_day" attrs="{'invisible': [('see_days', '=', False)]}"/>
+            </field>
+    
+            <field name="website" position="after">
+              <field name="hour_reception" attrs="{'invisible': [('see_days', '=', False)]}" />
+              <field name="hour_visit" attrs="{'invisible': [('see_days', '=', False)]}"/>
+              
+            </field>
+             
+           
+        </field>
+    </record>
+
+</odoo>
